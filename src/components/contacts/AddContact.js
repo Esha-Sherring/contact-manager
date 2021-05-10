@@ -51,7 +51,9 @@
                         email: '',
                         phone: '',
                          errors: {}
+
     });
+    this.props.history.push('/')
                 };
             
                 render() {
