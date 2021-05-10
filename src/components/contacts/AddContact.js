@@ -7,18 +7,37 @@
                     
                     name:' ',
                     email:' ',
-                    phone:' '
+                    phone:' ',
+                    errors: {}
                     
                 };
 
                 onChange = e =>
-                    this.setState = ({ [e.target.name]: e.target.value });
+                    this.setState({ [e.target.name]: e.target.value });
                 
             
                 onSumbit=(dispatch,e)=>{
                     e.preventDefault();
                    
                     const{name,email,phone}=this.state;
+                     // Check For Errors
+                        if (name === '') {
+                        this.setState({ errors: { name: 'Name is required' } });
+                        return;
+                        }
+
+                        if (email === '') {
+                        this.setState({ errors: { email: 'Email is required' } });
+                        return;
+                        }
+
+                        if (phone === '') {
+                        this.setState({ errors: { phone: 'Phone is required' } });
+                        return;
+                        }
+
+                       
+
                     const newContact ={
                         id:uuid(),
                         name,
@@ -27,11 +46,16 @@
                     }
                     dispatch({type:'ADD_CONTACT',payload:newContact})
                     //clear state
-                    
+                    this.setState({
+                        name: '',
+                        email: '',
+                        phone: '',
+                         errors: {}
+    });
                 };
             
                 render() {
-                    const {name,email,phone}=this.state;
+                    const {name,email,phone,errors}=this.state;
                     
                     return (
                         <Consumer>
@@ -44,11 +68,12 @@
                                 <form onSubmit={this.onSumbit.bind(this,dispatch)}>
                                 
                                 <TextInputGroup 
-                                   label="name"
+                                   label="Name"
                                    name="name"
                                    placeholder="Enter name..............."
                                    value={name}
                                    onChange={this.onChange}
+                                   error={errors.name}
                                  />
 
 
@@ -60,6 +85,7 @@
                                    placeholder="Enter email..............."
                                    value={email}
                                    onChange={this.onChange}
+                                   error={errors.email}
                                  />
 
                                 
@@ -69,7 +95,8 @@
                                    placeholder="Enter phone" 
                                    value={phone}
                                    onChange={this.onChange}
-                                   placeholderTextColor="red"
+                                   error={errors.phone}
+                                   
                                  />
 
                                 <input
