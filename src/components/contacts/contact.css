@@ -1,0 +1,6 @@
+.fa-remove:before,
+.fa-close:before,
+.fa-times:before {
+  float: right !important;
+  margin-bottom: 5 rem !important;
+}
