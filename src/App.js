@@ -4,6 +4,7 @@
   import Contacts from './components/contacts/Contacts';
   import {Provider} from './context';
   import About from './components/pages/about'
+  import EditContact from './components/contacts/EditContacts';
   import NotFound from './components/pages/notfound'
   import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
   import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,6 +23,7 @@
               <Route exact path="/"component={Contacts} />
               <Route exact path="/about"component={About} />
               <Route exact path="/add"component={AddContact} />
+              <Route exact path="/edit/:id"component={EditContact} />
               <Route exact component={NotFound} />
               </Switch>
              
