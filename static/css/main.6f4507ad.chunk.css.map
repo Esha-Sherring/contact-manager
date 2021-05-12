@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/contacts/contact.css"],"names":[],"mappings":"AAAA,oDAGE,qBAAuB,CACvB,6BACF","file":"main.6f4507ad.chunk.css","sourcesContent":[".fa-remove:before,\r\n.fa-close:before,\r\n.fa-times:before {\r\n  float: right !important;\r\n  margin-bottom: 5 rem !important;\r\n}\r\n"]}
